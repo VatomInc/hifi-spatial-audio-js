@@ -1,7 +1,7 @@
 // FROM https://github.com/node-webrtc/node-webrtc-examples/blob/master/lib/server/webrtc/rtcaudiosourcesinewave.js
 'use strict';
 
-const { RTCAudioSource } = require('wrtc').nonstandard;
+const { RTCAudioSource } = require('@koush/wrtc').nonstandard;
 
 const twoPi = 2 * Math.PI;
 

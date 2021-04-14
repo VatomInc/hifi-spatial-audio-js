@@ -179,7 +179,7 @@ export class HiFiUtilities {
     
         let nextTick = now();
         let clear:any = clearTimeout;
-        let wrapper = () => {
+        let wrapper: any = () => {
             let thisTick = now();
             if (thisTick < nextTick) {
                 clear = clearImmediate;

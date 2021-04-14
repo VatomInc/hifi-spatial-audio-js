@@ -1,6 +1,6 @@
 {
-  "name": "hifi-spatial-audio",
-  "version": "2.2.0-3",
+  "name": "@vatom/hifi-spatial-audio",
+  "version": "2.3.0",
   "description": "The High Fidelity Audio Client Library allows developers to integrate High Fidelity's spatial audio technology into their projects.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -58,7 +58,7 @@
     "esm": "^3.2.25",
     "pako": "^2.0.3",
     "uuid": "^8.3.2",
-    "wrtc": "^0.4.7",
+    "@koush/wrtc": "^0.5.3",
     "ws": "^7.4.2"
   },
   "keywords": [

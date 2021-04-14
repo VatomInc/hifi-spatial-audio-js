@@ -658,8 +658,8 @@ let crossPlatformRTCPeerConnection:any = null;
 let crossPlatformRTCSessionDescription:any = null;
 if (typeof self === 'undefined') {
   // node context
-  crossPlatformRTCPeerConnection = require('wrtc').RTCPeerConnection;
-  crossPlatformRTCSessionDescription = require('wrtc').RTCSessionDescription;
+  crossPlatformRTCPeerConnection = require('@koush/wrtc').RTCPeerConnection;
+  crossPlatformRTCSessionDescription = require('@koush/wrtc').RTCSessionDescription;
 } else {
   // browser context
   crossPlatformRTCPeerConnection = RTCPeerConnection;

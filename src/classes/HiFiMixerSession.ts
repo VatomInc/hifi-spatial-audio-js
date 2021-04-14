@@ -24,7 +24,7 @@ const isBrowser = typeof window !== 'undefined';
 let xMediaStream = isBrowser && window.MediaStream;
 if (!isBrowser) {
     try {
-        xMediaStream = require('wrtc').MediaStream;
+        xMediaStream = require('@koush/wrtc').MediaStream;
     } catch (e) {
         ; // Remains falsey. Don't report, don't log
     }
@@ -679,7 +679,7 @@ export class HiFiMixerSession {
             HiFiLogger.log(`Opening signaling connection`);
             return this._raviSignalingConnection.openRAVISignalingConnection(this.webRTCAddress)
             .catch((errorOpeningSignalingConnection) => {
-                let errMsg = `Couldn't open signaling connection to \`${this.webRTCAddress.slice(0, this.webRTCAddress.indexOf("token="))}<token redacted>\`! Error:\n${RaviUtils.safelyPrintable(errorOpeningSignalingConnection)}`;
+                let errMsg = `Couldn't open signaling connection to \`${this.webRTCAddress.slice(0, this.webRTCAddress.indexOf("token="))}<token redacted>\`! Error:\n${errorOpeningSignalingConnection}`;
                 throw(errMsg);
             });
         })
@@ -687,7 +687,7 @@ export class HiFiMixerSession {
             HiFiLogger.log(`Signaling connection open; starting RAVI session`);
             return this._raviSession.openRAVISession({ signalingConnection: this._raviSignalingConnection, timeout: timeout, params: webRTCSessionParams, customStunAndTurn: customSTUNandTURNConfig })
             .catch((errorOpeningRAVISession) => {
-                let errMsg = `Couldn't open RAVI session associated with \`${this.webRTCAddress.slice(0, this.webRTCAddress.indexOf("token="))}<token redacted>\`! Error:\n${RaviUtils.safelyPrintable(errorOpeningRAVISession)}`;
+                let errMsg = `Couldn't open RAVI session associated with \`${this.webRTCAddress.slice(0, this.webRTCAddress.indexOf("token="))}<token redacted>\`! Error:\n${errorOpeningRAVISession}`;
                 if (mixerIsUnavailable) {
                     errMsg = `High Fidelity server is at capacity; service is unavailable.`;
                     this._onConnectionStateChange(HiFiConnectionStates.Unavailable, { success: false, error: errMsg, disableReconnect: this._disableReconnect });
@@ -905,6 +905,7 @@ export class HiFiMixerSession {
             if (typeof (navigator) !== "undefined" && navigator.permissions && navigator.permissions.query) {
                 let result: PermissionStatus;
                 try {
+                    // @ts-ignore
                     result = await navigator.permissions.query({ name: 'microphone' });
                 } catch { }
                 if (result && result.state === "granted") {
