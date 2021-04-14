@@ -33,7 +33,7 @@ jobs:
          root: ~/app
          paths:
            - package.json
-           - build/*
+           - dist/*
 
   publish:
     <<: *defaults
