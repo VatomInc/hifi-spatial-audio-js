@@ -630,7 +630,7 @@ if (typeof self === 'undefined') {
 const peerConnectionConfig = {
   'iceServers': [
     {'urls': 'stun:stun.l.google.com:19302'},
-    {'urls': 'turn:turn.highfidelity.com:3478',
+    {'urls': 'turn:44.237.135.80:3478',
       'username': 'clouduser',
       'credential': 'chariot-travesty-hook'
     }
