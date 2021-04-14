@@ -14,16 +14,16 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - add_ssh_keys:
           fingerprints:
             - "32:0b:2f:d5:e3:57:a5:d8:8b:4b:9d:f2:06:27:02:01"
       - run:
           name: Install Project Dependencies
           command: |
-            yarn install
+            npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
       - run:
