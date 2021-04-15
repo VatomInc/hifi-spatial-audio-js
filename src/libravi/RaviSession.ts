@@ -629,12 +629,16 @@ if (typeof self === 'undefined') {
  */
 const peerConnectionConfig = {
   'iceServers': [
-    {'urls': 'stun:stun.l.google.com:19302'},
-    {'urls': 'turn:44.237.135.80:3478',
-      'username': 'clouduser',
-      'credential': 'chariot-travesty-hook'
+    { 'urls': 'stun:44.237.135.80:3478' },
+    { 'urls': 'turn:44.237.135.80:443?transport=tcp',
+        'username': 'clouduser',
+        'credential': 'chariot-travesty-hook'
+    },
+    { 'urls': 'turn:44.237.135.80:3478?transport=udp',
+        'username': 'clouduser',
+        'credential': 'chariot-travesty-hook'
     }
-  ]
+]
 };
 
 /** 
