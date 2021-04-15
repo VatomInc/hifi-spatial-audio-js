@@ -627,19 +627,30 @@ if (typeof self === 'undefined') {
  * @internal
  * Constants used during session negotiation
  */
-const peerConnectionConfig = {
-  'iceServers': [
-    { 'urls': 'stun:44.237.135.80:3478' },
-    { 'urls': 'turn:44.237.135.80:443?transport=tcp',
-        'username': 'clouduser',
-        'credential': 'chariot-travesty-hook'
-    },
-    { 'urls': 'turn:44.237.135.80:3478?transport=udp',
-        'username': 'clouduser',
-        'credential': 'chariot-travesty-hook'
+ const myIceServers = [
+   {
+     "url": "stun:global.stun.twilio.com:3478?transport=udp", 
+     "urls": "stun:global.stun.twilio.com:3478?transport=udp"
+    }, 
+    {
+      "url": "turn:global.turn.twilio.com:3478?transport=udp", 
+      "username": "9c6bea8d13baf01af71eeeb881edede3b2becb9377023e26e1446e6d25424458", 
+      "urls": "turn:global.turn.twilio.com:3478?transport=udp", 
+      "credential": "9ysQrf+JZtY6lH/dmvQGY3DWnHe82+THlHHIsQC19xo="
+    }, {
+      "url": "turn:global.turn.twilio.com:3478?transport=tcp", 
+      "username": "9c6bea8d13baf01af71eeeb881edede3b2becb9377023e26e1446e6d25424458", 
+      "urls": "turn:global.turn.twilio.com:3478?transport=tcp", 
+      "credential": "9ysQrf+JZtY6lH/dmvQGY3DWnHe82+THlHHIsQC19xo="
+    }, 
+    {
+      "url": "turn:global.turn.twilio.com:443?transport=tcp", 
+      "username": "9c6bea8d13baf01af71eeeb881edede3b2becb9377023e26e1446e6d25424458", 
+      "urls": "turn:global.turn.twilio.com:443?transport=tcp", 
+      "credential": "9ysQrf+JZtY6lH/dmvQGY3DWnHe82+THlHHIsQC19xo="
     }
-]
-};
+  ];
+  const peerConnectionConfig = { iceServers: myIceServers };
 
 /** 
  * @internal
