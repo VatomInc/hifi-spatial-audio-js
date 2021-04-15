@@ -628,28 +628,21 @@ if (typeof self === 'undefined') {
  * Constants used during session negotiation
  */
  const myIceServers = [
-   {
-     "url": "stun:global.stun.twilio.com:3478?transport=udp", 
-     "urls": "stun:global.stun.twilio.com:3478?transport=udp"
-    }, 
-    {
-      "url": "turn:global.turn.twilio.com:3478?transport=udp", 
-      "username": "9c6bea8d13baf01af71eeeb881edede3b2becb9377023e26e1446e6d25424458", 
-      "urls": "turn:global.turn.twilio.com:3478?transport=udp", 
-      "credential": "9ysQrf+JZtY6lH/dmvQGY3DWnHe82+THlHHIsQC19xo="
-    }, {
-      "url": "turn:global.turn.twilio.com:3478?transport=tcp", 
-      "username": "9c6bea8d13baf01af71eeeb881edede3b2becb9377023e26e1446e6d25424458", 
-      "urls": "turn:global.turn.twilio.com:3478?transport=tcp", 
-      "credential": "9ysQrf+JZtY6lH/dmvQGY3DWnHe82+THlHHIsQC19xo="
-    }, 
-    {
-      "url": "turn:global.turn.twilio.com:443?transport=tcp", 
-      "username": "9c6bea8d13baf01af71eeeb881edede3b2becb9377023e26e1446e6d25424458", 
-      "urls": "turn:global.turn.twilio.com:443?transport=tcp", 
-      "credential": "9ysQrf+JZtY6lH/dmvQGY3DWnHe82+THlHHIsQC19xo="
-    }
-  ];
+  {
+    urls: [ "stun:ws-turn4.xirsys.com" ]
+  }, 
+  {
+    username: "q6FhsoddSM9VLo_O9UWpvge-09NuxO9DGfbr19Nq2CGOJrm0jDKvOrXYHN17Kzq_AAAAAGB3xLRhc2hpc2g=",
+    credential: "47963698-9da5-11eb-b494-0242ac140004",
+    urls: [
+        "turn:ws-turn4.xirsys.com:80?transport=udp",
+        "turn:ws-turn4.xirsys.com:3478?transport=udp",
+        "turn:ws-turn4.xirsys.com:80?transport=tcp",
+        "turn:ws-turn4.xirsys.com:3478?transport=tcp",
+        "turns:ws-turn4.xirsys.com:443?transport=tcp",
+        "turns:ws-turn4.xirsys.com:5349?transport=tcp"
+    ]
+  }];
   const peerConnectionConfig = { iceServers: myIceServers };
 
 /** 
