@@ -10,14 +10,17 @@ const xAddEventListener:any = isBrowser ? window.addEventListener : noop;
 const xRemoveEventListener:any = isBrowser ? window.removeEventListener : noop;
 const xDocument = isBrowser ? window.document : {visibilityState: true, addEventListener: noop, removeEventListener: noop};
 const xNavigator = isBrowser ? window.navigator : {onLine: true, userAgent: `NodeJS ${(process.report.getReport() as any).header.nodejsVersion}`};
-let xfetch = isBrowser && window.fetch;
-if (!isBrowser) {
-    try {
-        xfetch = require('node-fetch');
-    } catch (e) {
-        ; // Remains falsey. Don't report, don't log
-    }
-}
+// let xfetch = isBrowser && window.fetch;
+// if (!isBrowser) {
+//     try {
+//         xfetch = require('node-fetch');
+//     } catch (e) {
+//         ; // Remains falsey. Don't report, don't log
+//     }
+// }
+
+// Disable post-logs
+let xfetch: any = false;
 
 const MAX_DIAGNOSTICS_STORAGE_LENGTH = 5000;
 
@@ -244,7 +247,7 @@ export class Diagnostics {
             headers: { 'Content-Type': 'text/plain' },
             body: reportString
         }).then((response:Response) => response.ok)
-          .catch((err) => { console.log(`Could not send diagnostics report for ${this.label} to ${this.url}: ${err}`); return false; });
+          .catch((err: any) => { console.log(`Could not send diagnostics report for ${this.label} to ${this.url}: ${err}`); return false; });
     }
     /**
      * Add reportString to the set of data being saved for later reporting.
